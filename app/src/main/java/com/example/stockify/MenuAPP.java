@@ -28,12 +28,12 @@ public class MenuAPP extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        /*btnBuscar.setOnClickListener(new View.OnClickListener() {
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MenuAPP.this, BuscarProducto.class);
+                Intent intent = new Intent(MenuAPP.this, ListarProducto.class);
                 startActivity(intent);
             }
-        });*/
+        });
     }
 }
