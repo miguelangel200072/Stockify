@@ -71,7 +71,7 @@ public class GenerarCodigo extends AppCompatActivity {
             paint.setTextSize(60);
 
             paint.setColor(Color.BLACK);
-            canvas1.drawText(codigo1, 50, bitmap1.getHeight() + 90, paint);
+            canvas1.drawText(codigo1, 50, bitmap1.getHeight() + 100, paint);
 
             // Imprimir el bitmap final
             printHelper.printBitmap("codigos", combinedBitmap1);
