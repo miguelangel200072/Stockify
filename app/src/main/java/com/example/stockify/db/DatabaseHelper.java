@@ -18,7 +18,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Tabla "producto"
     private static final String CREATE_TABLE_PRODUCTO = "CREATE TABLE producto (" +
-            "codigo TEXT PRIMARY KEY," +
+            "idProd INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "codigo TEXT," +
             "standNuevo TEXT," +
             "descr TEXT" +
             ")";

@@ -14,8 +14,8 @@ public class EliminarProductoDB extends DatabaseHelper{
         super(context);
         this.context = context;
     }
-    public boolean eliminarProducto(String codigo) {
-        Log.e("error", codigo);
+    public boolean eliminarProducto(int id) {
+
 
         boolean correcto = false;
 
@@ -23,7 +23,7 @@ public class EliminarProductoDB extends DatabaseHelper{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         try {
-            db.execSQL("DELETE FROM " + TABLE_PRODUCTO + " WHERE codigo = '" + codigo + "'");
+            db.execSQL("DELETE FROM " + TABLE_PRODUCTO + " WHERE idProd = '" + id + "'");
             correcto = true;
         } catch (Exception ex) {
             ex.toString();
