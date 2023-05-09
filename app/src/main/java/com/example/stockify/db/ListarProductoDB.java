@@ -26,7 +26,7 @@ public class ListarProductoDB extends DatabaseHelper{
         Producto producto = null;
         Cursor cursorProducto = null;
 
-        cursorProducto = db.rawQuery("SELECT * FROM " + TABLE_PRODUCTO +" WHERE codigo = " + codigo, null);
+        cursorProducto = db.rawQuery("SELECT * FROM " + TABLE_PRODUCTO +" WHERE codigo = '" + codigo + "'", null);
         if (cursorProducto.moveToFirst()){
             do{
                 producto = new Producto();
