@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MenuAPP extends AppCompatActivity {
-    Button btnInsertar, btnBuscar;
+    Button btnInsertar, btnBuscar, btnGenerar;
     TextView tvUser;
 
     @Override
@@ -21,6 +21,7 @@ public class MenuAPP extends AppCompatActivity {
         tvUser.setText("USUARIO: " +username);
         btnInsertar = findViewById(R.id.btnInsertar);
         btnBuscar = findViewById(R.id.btnBuscar);
+        btnGenerar = findViewById(R.id.btnGenerar);
         btnInsertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,6 +33,13 @@ public class MenuAPP extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MenuAPP.this, ListarProducto.class);
+                startActivity(intent);
+            }
+        });
+        btnGenerar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuAPP.this, GenerarCodigo.class);
                 startActivity(intent);
             }
         });
