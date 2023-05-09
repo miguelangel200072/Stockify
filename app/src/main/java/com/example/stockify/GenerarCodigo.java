@@ -41,6 +41,7 @@ public class GenerarCodigo extends AppCompatActivity {
                 } catch (Exception e){
                     e.printStackTrace();
                 }
+                btnImprimir.setVisibility(View.VISIBLE);
             }
         });
         btnImprimir.setOnClickListener(new View.OnClickListener() {

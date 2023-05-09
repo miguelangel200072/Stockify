@@ -57,7 +57,11 @@
         android:id="@+id/btnImprimir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="imprimir" />
+        android:text="imprimir"
+        android:backgroundTint="@color/boton"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        tools:visibility="visible"/>
 
 
 </LinearLayout>
