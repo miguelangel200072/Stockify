@@ -7,12 +7,7 @@ public class Producto {
     private String standNuevo;
     private String descr;
 
-    public Producto(int idProd, String codigo, String standNuevo, String descr) {
-        this.idProd = idProd;
-        this.codigo = codigo;
-        this.standNuevo = standNuevo;
-        this.descr = descr;
-    }
+
 
     public int getIdProd() {return idProd; }
 
