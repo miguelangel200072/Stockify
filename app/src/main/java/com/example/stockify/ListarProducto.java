@@ -5,6 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.stockify.adaptadores.ListaProductoAdapter;
 import com.example.stockify.db.ListarProductoDB;
@@ -14,6 +17,8 @@ import java.util.ArrayList;
 
 public class ListarProducto extends AppCompatActivity {
     RecyclerView listaProducto;
+    Button btnBuscar;
+    EditText etArt;
     ArrayList<Producto> listaArrayProducto;
 
     @Override
@@ -21,11 +26,21 @@ public class ListarProducto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_producto);
         listaProducto = findViewById(R.id.listaProducto);
+        etArt = findViewById(R.id.etArt);
+        btnBuscar = findViewById(R.id.btnBuscar);
         listaProducto.setLayoutManager(new LinearLayoutManager(this));
 
-        ListarProductoDB listarProductoDB = new ListarProductoDB(ListarProducto.this);
-        listaArrayProducto = new ArrayList<>();
-        ListaProductoAdapter adapter = new ListaProductoAdapter(ListarProductoDB.listarProducto());
-        listaProducto.setAdapter(adapter);
+        btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String codigo;
+                codigo = etArt.getText().toString();
+                ListarProductoDB listarProductoDB = new ListarProductoDB(ListarProducto.this);
+                listaArrayProducto = new ArrayList<>();
+                ListaProductoAdapter adapter = new ListaProductoAdapter(ListarProductoDB.listarProducto(codigo));
+                listaProducto.setAdapter(adapter);
+            }
+        });
+
     }
 }

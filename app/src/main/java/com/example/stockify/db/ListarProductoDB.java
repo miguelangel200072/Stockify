@@ -19,14 +19,14 @@ public class ListarProductoDB extends DatabaseHelper{
         super(context);
         this.context = context;
     }
-    public static ArrayList<Producto> listarProducto(){
+    public static ArrayList<Producto> listarProducto(String codigo){
         DatabaseHelper databaseHelper = new DatabaseHelper(context);
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
         ArrayList<Producto> listaProducto = new ArrayList<>();
         Producto producto = null;
         Cursor cursorProducto = null;
 
-        cursorProducto = db.rawQuery("SELECT * FROM " + TABLE_PRODUCTO, null);
+        cursorProducto = db.rawQuery("SELECT * FROM " + TABLE_PRODUCTO +" WHERE codigo = " + codigo, null);
         if (cursorProducto.moveToFirst()){
             do{
                 producto = new Producto();
