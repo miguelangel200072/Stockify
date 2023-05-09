@@ -2,6 +2,7 @@ package com.example.stockify.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -13,7 +14,8 @@ public class EliminarProductoDB extends DatabaseHelper{
         super(context);
         this.context = context;
     }
-    public boolean eliminarProducto(int id) {
+    public boolean eliminarProducto(String codigo) {
+        Log.e("error", codigo);
 
         boolean correcto = false;
 
@@ -21,7 +23,7 @@ public class EliminarProductoDB extends DatabaseHelper{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         try {
-            db.execSQL("DELETE FROM " + TABLE_PRODUCTO + " WHERE idProd = '" + id + "'");
+            db.execSQL("DELETE FROM " + TABLE_PRODUCTO + " WHERE codigo = '" + codigo + "'");
             correcto = true;
         } catch (Exception ex) {
             ex.toString();

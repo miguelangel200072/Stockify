@@ -54,7 +54,7 @@ public class ListaProductoAdapter extends RecyclerView.Adapter<ListaProductoAdap
                             public void onClick(DialogInterface dialog, int which) {
                                 // Elimina el producto de la base de datos y de la lista
                                 EliminarProductoDB eliminarProductoDB = new EliminarProductoDB(holder.itemView.getContext());
-                                boolean eliminado = eliminarProductoDB.eliminarProducto(listaProducto.get(position).getIdProd());
+                                boolean eliminado = eliminarProductoDB.eliminarProducto(listaProducto.get(position).getDescr());
                                 if (eliminado) {
                                     listaProducto.remove(position);
                                     notifyItemRemoved(position);

@@ -30,10 +30,9 @@ public class ListarProductoDB extends DatabaseHelper{
         if (cursorProducto.moveToFirst()){
             do{
                 producto = new Producto();
-                producto.setIdProd(cursorProducto.getInt(0));
-                producto.setDescr(cursorProducto.getString(1));
-                producto.setCodigo(cursorProducto.getString(2));
-                producto.setStandNuevo(cursorProducto.getString(3));
+                producto.setDescr(cursorProducto.getString(0));
+                producto.setCodigo(cursorProducto.getString(1));
+                producto.setStandNuevo(cursorProducto.getString(2));
                 listaProducto.add(producto);
             } while (cursorProducto.moveToNext());
         }
