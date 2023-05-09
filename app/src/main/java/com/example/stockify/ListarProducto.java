@@ -4,20 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.stockify.adaptadores.ListaProductoAdapter;
 import com.example.stockify.db.ListarProductoDB;
 import com.example.stockify.entidades.Producto;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import java.util.ArrayList;
 
 public class ListarProducto extends AppCompatActivity {
     RecyclerView listaProducto;
-    Button btnBuscar;
+    Button btnBuscar, btnScan;
     EditText etArt;
     ArrayList<Producto> listaArrayProducto;
 
@@ -28,7 +32,23 @@ public class ListarProducto extends AppCompatActivity {
         listaProducto = findViewById(R.id.listaProducto);
         etArt = findViewById(R.id.etArt);
         btnBuscar = findViewById(R.id.btnBuscar);
+        btnScan = findViewById(R.id.btnScan);
         listaProducto.setLayoutManager(new LinearLayoutManager(this));
+
+        btnScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                IntentIntegrator integrador = new IntentIntegrator(ListarProducto.this);
+                integrador.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrador.setPrompt("Stockify");
+                integrador.setCameraId(0);
+                integrador.setBeepEnabled(true);
+                integrador.setBarcodeImageEnabled(true);
+                integrador.initiateScan();
+            }
+        });
+
 
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +61,20 @@ public class ListarProducto extends AppCompatActivity {
                 listaProducto.setAdapter(adapter);
             }
         });
+
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null){
+            if (result.getContents() == null){
+                Toast.makeText(this, "Lectura cancelada", Toast.LENGTH_LONG).show();
+            }else {
+                Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
+                etArt.setText(result.getContents());
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
 
     }
 }
