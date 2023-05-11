@@ -16,7 +16,7 @@ public class ObtenerIdDB extends DatabaseHelper {
         mContext = context;
     }
 
-    public static void obtenerId(EditText etcodigo, int numId) {
+    public static int obtenerId(EditText etcodigo, int numId) {
         String codigo = etcodigo.getText().toString();
 
         MostrarStandDB dbHelper = new MostrarStandDB(etcodigo.getContext());
@@ -40,6 +40,7 @@ public class ObtenerIdDB extends DatabaseHelper {
         // Cerrar el cursor y la base de datos
         cursor.close();
         db.close();
+        return numId;
     }
 
 

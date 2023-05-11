@@ -13,7 +13,7 @@ public class CambioSHistoricoDB extends DatabaseHelper{
         super(context);
         this.context = context;
     }
-    public long cambioSHistorico(int idProd, String standNuevo, String standAnterior) {
+    public long cambioSHistorico(int idProd, String standNuevo, String standAnterior, int idUsuario, String fecha) {
 
         long id = 0;
 
@@ -25,6 +25,8 @@ public class CambioSHistoricoDB extends DatabaseHelper{
             values.put("idProd", idProd);
             values.put("standNuevo", standNuevo);
             values.put("standAnterior", standAnterior);
+            values.put("idUsuario", idUsuario);
+            values.put("fecha", fecha);
 
             id = db.insert("historico", null, values);
         } catch (Exception ex) {

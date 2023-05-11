@@ -18,7 +18,7 @@ public class MenuAPP extends AppCompatActivity {
         setContentView(R.layout.activity_menu_app);
         tvUser = findViewById(R.id.tvUser);
         String username = getIntent().getStringExtra("username");
-        tvUser.setText("USUARIO: " +username);
+        tvUser.setText(username);
         btnInsertar = findViewById(R.id.btnInsertar);
         btnBuscar = findViewById(R.id.btnBuscar);
         btnGenerar = findViewById(R.id.btnGenerar);
@@ -48,6 +48,8 @@ public class MenuAPP extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MenuAPP.this, CambioStand.class);
+                String username = tvUser.getText().toString();
+                intent.putExtra("username", username);
                 startActivity(intent);
             }
         });
