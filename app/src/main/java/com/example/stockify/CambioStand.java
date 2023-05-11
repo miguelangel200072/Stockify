@@ -3,6 +3,8 @@ package com.example.stockify;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +21,7 @@ import com.example.stockify.db.ObtenerIdUsuarioDB;
 import java.util.Calendar;
 
 public class CambioStand extends AppCompatActivity {
-    Button btnCambio, btnScan, button;
+    Button btnCambio, btnScan;
     TextView tvStand, tvUser;
     EditText etStandNuevo, etArt;
     int numId, id2, idUsuario;
@@ -37,30 +39,39 @@ public class CambioStand extends AppCompatActivity {
         tvUser.setText(username);
         etStandNuevo = findViewById(R.id.etStandNuevo);
         etArt = findViewById(R.id.etArt);
-        button = findViewById(R.id.button);
 
 
 
-
-        btnCambio.setOnClickListener(new View.OnClickListener() {
+        etArt.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View view) {
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
                 //metodo para mostrar stand previo al cambio
                 MostrarStandDB.mostrarStand(etArt, tvStand);
                 //obtener el id del producto
                 id2 = ObtenerIdDB.obtenerId(etArt, numId);
+            }
+        });
+        btnCambio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
                 //etStandNuevo.setText(String.valueOf(id2));
                 Log.d("mostrarStand", "idProd2: " + id2);
                 //obtener el id del usuario que realiza el cambio
                 idUsuario = ObtenerIdUsuarioDB.obtenerIdUsuario(tvUser, idUsuario);
                 Log.d("mostrarStand", "idUsuario: " + id2);
 
-
-            }
-        });
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 //metodo para actualizar stand tabla producto
                 CambioSProductoDB cambioSProductoDB = new CambioSProductoDB(CambioStand.this);
                 cambioSProductoDB.cambioSProducto(etArt.getText().toString(), etStandNuevo.getText().toString());
