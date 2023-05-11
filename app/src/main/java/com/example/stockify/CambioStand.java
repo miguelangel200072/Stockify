@@ -10,11 +10,13 @@ import android.widget.TextView;
 
 import com.example.stockify.db.CambioSProductoDB;
 import com.example.stockify.db.MostrarStandDB;
+import com.example.stockify.db.ObtenerIdDB;
 
 public class CambioStand extends AppCompatActivity {
     Button btnCambio, btnScan, button;
     TextView tvStand;
     EditText etStandNuevo, etArt;
+    int numId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class CambioStand extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 MostrarStandDB.mostrarStand(etArt, tvStand);
+                ObtenerIdDB.obtenerId(etArt, numId);
             }
         });
         button.setOnClickListener(new View.OnClickListener() {

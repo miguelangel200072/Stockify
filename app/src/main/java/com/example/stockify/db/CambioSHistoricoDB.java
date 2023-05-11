@@ -13,7 +13,7 @@ public class CambioSHistoricoDB extends DatabaseHelper{
         super(context);
         this.context = context;
     }
-    public long cambioSHistorico(String codigo, String standNuevo, String descr) {
+    public long cambioSHistorico(int idProd, String standNuevo, String standAnterior) {
 
         long id = 0;
 
@@ -22,11 +22,11 @@ public class CambioSHistoricoDB extends DatabaseHelper{
             SQLiteDatabase db = dbHelper.getWritableDatabase();
 
             ContentValues values = new ContentValues();
-            values.put("codigo", codigo);
+            values.put("idProd", idProd);
             values.put("standNuevo", standNuevo);
-            values.put("descr", descr);
+            values.put("standAnterior", standAnterior);
 
-            id = db.insert("producto", null, values);
+            id = db.insert("historico", null, values);
         } catch (Exception ex) {
             ex.toString();
         }
