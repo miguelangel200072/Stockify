@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.stockify.adaptadores.ListaProductoAdapter;
+import com.example.stockify.db.ListarProductoAllDB;
 import com.example.stockify.db.ListarProductoDB;
 import com.example.stockify.entidades.Producto;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 
 public class ListarProducto extends AppCompatActivity {
     RecyclerView listaProducto;
-    Button btnBuscar, btnScan;
+    Button btnBuscar, btnScan, btnAll;
     EditText etArt;
     ArrayList<Producto> listaArrayProducto;
 
@@ -33,6 +34,7 @@ public class ListarProducto extends AppCompatActivity {
         etArt = findViewById(R.id.etArt);
         btnBuscar = findViewById(R.id.btnBuscar);
         btnScan = findViewById(R.id.btnScan);
+        btnAll = findViewById(R.id.btnAll);
         listaProducto.setLayoutManager(new LinearLayoutManager(this));
 
         btnScan.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +60,15 @@ public class ListarProducto extends AppCompatActivity {
                 ListarProductoDB listarProductoDB = new ListarProductoDB(ListarProducto.this);
                 listaArrayProducto = new ArrayList<>();
                 ListaProductoAdapter adapter = new ListaProductoAdapter(ListarProductoDB.listarProducto(codigo));
+                listaProducto.setAdapter(adapter);
+            }
+        });
+        btnAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ListarProductoAllDB listarProductoAllDB =new ListarProductoAllDB(ListarProducto.this);
+                listaArrayProducto = new ArrayList<>();
+                ListaProductoAdapter adapter = new ListaProductoAdapter(ListarProductoAllDB.listarProducto());
                 listaProducto.setAdapter(adapter);
             }
         });
