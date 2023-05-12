@@ -37,6 +37,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "FOREIGN KEY(standNuevo) REFERENCES producto(standNuevo)" +
             ")";
 
+    private SQLiteDatabase database;
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -56,4 +58,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Aquí puedes actualizar la estructura de tus tablas si cambia la versión de la base de datos
 
     }
+
+    @Override
+    public synchronized SQLiteDatabase getReadableDatabase() {
+        if (database == null) {
+            database = getWritableDatabase();
+        }
+        return database;
+    }
+
+
 }

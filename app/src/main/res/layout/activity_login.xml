@@ -11,12 +11,12 @@
         android:id="@+id/btnInsertar"
         android:layout_width="105dp"
         android:layout_height="56dp"
-        android:layout_marginTop="536dp"
+        android:layout_marginTop="560dp"
         android:backgroundTint="@color/boton"
         android:text="Log in"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintHorizontal_bias="0.751"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,7 +24,7 @@
         android:id="@+id/btnRegistro"
         android:layout_width="105dp"
         android:layout_height="56dp"
-        android:layout_marginTop="536dp"
+        android:layout_marginTop="560dp"
         android:backgroundTint="@color/boton"
         android:text="sign up"
         android:textColor="@color/black"
@@ -45,7 +45,6 @@
         android:background="@drawable/prueba"
         android:elevation="2.5dp"
         android:ems="10"
-        android:hint="introduzca usuario:"
         android:inputType="textAutoCorrect"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
@@ -62,18 +61,18 @@
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="464dp"
+        android:layout_marginTop="488dp"
         android:layout_marginEnd="72dp"
         android:background="@drawable/prueba"
         android:elevation="2.5dp"
         android:ems="10"
-        android:hint="introduzca contraseña:"
         android:inputType="textPassword"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -102,6 +101,28 @@
         android:textSize="48sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="376dp"
+        android:text="Usuario:"
+        android:textColor="#FBFBFB"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="468dp"
+        android:textColor="#FBFBFB"
+        android:text="Contraseña:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

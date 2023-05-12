@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Stockify"
         tools:targetApi="31">
         <activity
+            android:name=".Historico"
+            android:exported="false" />
+        <activity
             android:name=".CambioStand"
             android:exported="false" />
         <activity

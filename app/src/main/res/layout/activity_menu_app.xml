@@ -9,10 +9,10 @@
 
     <Button
         android:id="@+id/btnInsertar"
-        android:layout_width="127dp"
-        android:layout_height="78dp"
+        android:layout_width="160dp"
+        android:layout_height="124dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="88dp"
         android:backgroundTint="@color/boton"
         android:text="Insertar producto"
         android:textColor="@color/black"
@@ -21,10 +21,10 @@
 
     <Button
         android:id="@+id/btnBuscar"
-        android:layout_width="127dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="160dp"
+        android:layout_height="124dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="28dp"
         android:backgroundTint="@color/boton"
         android:text="Buscar producto"
         android:textColor="@color/black"
@@ -33,10 +33,10 @@
 
     <Button
         android:id="@+id/btnGenerar"
-        android:layout_width="127dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="188dp"
+        android:layout_width="160dp"
+        android:layout_height="124dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="252dp"
         android:backgroundTint="@color/boton"
         android:text="GENERAR CODIGO"
         android:textColor="@color/black"
@@ -56,12 +56,26 @@
 
     <Button
         android:id="@+id/btnCambio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="488dp"
-        android:text="Button"
+        android:layout_width="160dp"
+        android:layout_height="124dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="352dp"
+        android:backgroundTint="@color/boton"
+        android:text="Cambio Stand"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnHistorico"
+        android:layout_width="160dp"
+        android:layout_height="124dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="424dp"
+        android:backgroundTint="@color/boton"
+        android:text="Historico"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
