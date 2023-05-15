@@ -46,7 +46,7 @@
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:backgroundTint="@color/boton"
-            android:text="Button"
+            android:text="ESCANEAR"
             android:textColor="@color/black" />
     </LinearLayout>
 
@@ -54,11 +54,11 @@
         android:id="@+id/btnBuscar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="BUSCAR"
         android:backgroundTint="@color/boton"
         android:textColor="@color/black"
-        android:layout_margin="10dp"
-
-        android:text="Buscar" />
+        />
 
     <HorizontalScrollView
         android:layout_width="match_parent"

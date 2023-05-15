@@ -18,7 +18,7 @@ import android.widget.TextView;
 import com.example.stockify.db.DatabaseHelper;
 
 public class Historico extends AppCompatActivity {
-    private DatabaseHelper dbHelper;
+  /*  private DatabaseHelper dbHelper;
     Context context;
         dbHelper = new DatabaseHelper(context);
 
@@ -132,5 +132,5 @@ public class Historico extends AppCompatActivity {
         cursor.close();
         db.close();
 
-    }
+    }*/
 }
