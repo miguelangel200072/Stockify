@@ -38,9 +38,7 @@ public class Registro extends AppCompatActivity {
 
                 if (!username.equals("") && !password.equals("")) {
                     User existingUser = userDB.getUser(username, password);
-                    if (existingUser != null) {
-                        Toast.makeText(Registro.this, "El usuario ya existe", Toast.LENGTH_LONG).show();
-                    } else {
+
                         boolean isUsernameTaken = userDB.checkUsernameExists(username);
                         if (isUsernameTaken) {
                             Toast.makeText(Registro.this, "El nombre de usuario ya está en uso", Toast.LENGTH_LONG).show();
@@ -54,7 +52,7 @@ public class Registro extends AppCompatActivity {
                                 Toast.makeText(Registro.this, "ERROR AL GUARDAR REGISTRO", Toast.LENGTH_LONG).show();
                             }
                         }
-                    }
+
                 } else {
                     Toast.makeText(Registro.this, "DEBE LLENAR LOS CAMPOS OBLIGATORIOS", Toast.LENGTH_LONG).show();
                 }
