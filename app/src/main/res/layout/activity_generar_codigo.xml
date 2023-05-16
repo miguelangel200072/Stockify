@@ -8,6 +8,28 @@
     android:background="@color/gris"
     tools:context=".GenerarCodigo">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/tvSesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="USUARIO:"
+            android:layout_marginLeft="10dp"
+            android:textColor="#FFFFFF" />
+        <TextView
+            android:id="@+id/tvUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
     <EditText
         android:id="@+id/etCodigo"
         android:layout_width="match_parent"

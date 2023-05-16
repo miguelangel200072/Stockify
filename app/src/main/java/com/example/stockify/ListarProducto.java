@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.stockify.adaptadores.ListaProductoAdapter;
@@ -24,6 +25,7 @@ public class ListarProducto extends AppCompatActivity {
     RecyclerView listaProducto;
     Button btnBuscar, btnScan, btnAll;
     EditText etArt;
+    TextView tvUser;
     ArrayList<Producto> listaArrayProducto;
 
     @Override
@@ -35,6 +37,9 @@ public class ListarProducto extends AppCompatActivity {
         btnBuscar = findViewById(R.id.btnBuscar);
         btnScan = findViewById(R.id.btnScan);
         btnAll = findViewById(R.id.btnAll);
+        tvUser = findViewById(R.id.tvUser);
+        String username = getIntent().getStringExtra("username");
+        tvUser.setText(username);
         listaProducto.setLayoutManager(new LinearLayoutManager(this));
 
         btnScan.setOnClickListener(new View.OnClickListener() {

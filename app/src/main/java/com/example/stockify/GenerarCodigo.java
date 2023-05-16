@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.zxing.BarcodeFormat;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
@@ -20,6 +21,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 public class GenerarCodigo extends AppCompatActivity {
     ImageView imgCodigo;
     EditText etCodigo;
+    TextView tvUser;
     Button btnGenerar, btnImprimir;
 
     @Override
@@ -30,6 +32,9 @@ public class GenerarCodigo extends AppCompatActivity {
         btnGenerar = findViewById(R.id.btnGenerar);
         imgCodigo = findViewById(R.id.imgCodigo);
         btnImprimir = findViewById(R.id.btnImprimir);
+        tvUser = findViewById(R.id.tvUser);
+        String username = getIntent().getStringExtra("username");
+        tvUser.setText(username);
 
         btnGenerar.setOnClickListener(new View.OnClickListener() {
             @Override

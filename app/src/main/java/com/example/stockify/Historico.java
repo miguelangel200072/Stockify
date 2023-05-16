@@ -38,6 +38,9 @@ public class Historico extends AppCompatActivity {
         tablaResultados = findViewById(R.id.tlHistorico);
         EditText etArt = (EditText) findViewById(R.id.etArt);
         Button btnBuscar = (Button) findViewById(R.id.btnBuscar);
+        TextView tvUser = findViewById(R.id.tvUser);
+        String username = getIntent().getStringExtra("username");
+        tvUser.setText(username);
         btnBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

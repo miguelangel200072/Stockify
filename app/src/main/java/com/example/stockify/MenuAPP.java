@@ -28,6 +28,8 @@ public class MenuAPP extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MenuAPP.this, InsertarProducto.class);
+                String username = tvUser.getText().toString();
+                intent.putExtra("username", username);
                 startActivity(intent);
             }
         });
@@ -35,6 +37,8 @@ public class MenuAPP extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MenuAPP.this, ListarProducto.class);
+                String username = tvUser.getText().toString();
+                intent.putExtra("username", username);
                 startActivity(intent);
             }
         });
@@ -42,6 +46,8 @@ public class MenuAPP extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MenuAPP.this, GenerarCodigo.class);
+                String username = tvUser.getText().toString();
+                intent.putExtra("username", username);
                 startActivity(intent);
             }
         });
