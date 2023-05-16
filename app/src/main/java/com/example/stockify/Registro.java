@@ -9,10 +9,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.stockify.db.RegistroNuevoDB;
+import com.example.stockify.db.UserDB;
+import com.example.stockify.entidades.User;
 
 public class Registro extends AppCompatActivity {
     EditText etUser, etPass;
     Button btnRegistro;
+    RegistroNuevoDB dbContactos;
+    UserDB userDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,20 +27,33 @@ public class Registro extends AppCompatActivity {
         etPass = findViewById(R.id.etPass);
         btnRegistro = findViewById(R.id.btnRegistro);
 
+        dbContactos = new RegistroNuevoDB(Registro.this);
+        userDB = new UserDB(dbContactos.getReadableDatabase());
+
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String username = etUser.getText().toString();
+                String password = etPass.getText().toString();
 
-                if(!etUser.getText().toString().equals("") && !etPass.getText().toString().equals("")) {
-
-                    RegistroNuevoDB dbContactos = new RegistroNuevoDB(Registro.this);
-                    long id = dbContactos.insertarContacto(etUser.getText().toString(), etPass.getText().toString());
-
-                    if (id > 0) {
-                        Toast.makeText(Registro.this, "REGISTRO GUARDADO", Toast.LENGTH_LONG).show();
-                        limpiar();
+                if (!username.equals("") && !password.equals("")) {
+                    User existingUser = userDB.getUser(username, password);
+                    if (existingUser != null) {
+                        Toast.makeText(Registro.this, "El usuario ya existe", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(Registro.this, "ERROR AL GUARDAR REGISTRO", Toast.LENGTH_LONG).show();
+                        boolean isUsernameTaken = userDB.checkUsernameExists(username);
+                        if (isUsernameTaken) {
+                            Toast.makeText(Registro.this, "El nombre de usuario ya está en uso", Toast.LENGTH_LONG).show();
+                        } else {
+                            long id = dbContactos.insertarContacto(username, password);
+
+                            if (id > 0) {
+                                Toast.makeText(Registro.this, "REGISTRO GUARDADO", Toast.LENGTH_LONG).show();
+                                limpiar();
+                            } else {
+                                Toast.makeText(Registro.this, "ERROR AL GUARDAR REGISTRO", Toast.LENGTH_LONG).show();
+                            }
+                        }
                     }
                 } else {
                     Toast.makeText(Registro.this, "DEBE LLENAR LOS CAMPOS OBLIGATORIOS", Toast.LENGTH_LONG).show();
@@ -44,6 +61,7 @@ public class Registro extends AppCompatActivity {
             }
         });
     }
+
     private void limpiar() {
         etUser.setText("");
         etPass.setText("");

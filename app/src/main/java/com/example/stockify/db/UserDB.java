@@ -28,4 +28,13 @@ public class UserDB {
         cursor.close();
         return user;
     }
+    public boolean checkUsernameExists(String username) {
+        String[] columns = {"idUsuario"};
+        String selection = "nom = ?";
+        String[] selectionArgs = {username};
+        Cursor cursor = mDatabase.query("usuario", columns, selection, selectionArgs, null, null, null);
+        boolean usernameExists = cursor.moveToFirst();
+        cursor.close();
+        return usernameExists;
+    }
 }
