@@ -59,13 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    @Override
-    public synchronized SQLiteDatabase getReadableDatabase() {
-        if (database == null) {
-            database = getWritableDatabase();
-        }
-        return database;
-    }
+
 
 
 }
