@@ -86,7 +86,7 @@
             android:layout_marginRight="50dp"
             android:backgroundTint="@color/boton"
             android:text="sign up"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/btnInsertar"
