@@ -36,5 +36,6 @@ public class UserDB {
         boolean usernameExists = cursor.moveToFirst();
         cursor.close();
         return usernameExists;
+
     }
 }
