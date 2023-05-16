@@ -80,6 +80,7 @@ public class CambioStand extends AppCompatActivity {
 
                 CambioSHistoricoDB dbContactos = new CambioSHistoricoDB(CambioStand.this);
                 long id = dbContactos.cambioSHistorico(id2, SN, SA,idUsuario, getDateTime());
+                MostrarStandDB.mostrarStand(etArt, tvStand);
 
 
             }
@@ -99,7 +100,7 @@ public class CambioStand extends AppCompatActivity {
         int second = cal.get(Calendar.SECOND);
 
         // Formatea la fecha y hora como una cadena
-        String dateTime = String.format("%d-%02d-%02d %02d:%02d:%02d", year, month, day, hour, minute, second);
+        String dateTime = String.format("%d-%02d-%02d %02d:%02d:%02d", day, month, year, hour, minute, second);
 
         return dateTime;
     }
