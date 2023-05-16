@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.stockify.db.DatabaseHelper;
-import com.example.stockify.db.UserDAO;
+import com.example.stockify.db.UserDB;
 import com.example.stockify.entidades.User;
 
 public class Login extends AppCompatActivity {
@@ -20,7 +20,7 @@ public class Login extends AppCompatActivity {
     private SQLiteDatabase mDatabase;
     private EditText etUser;
     private EditText etPass;
-    private UserDAO mUserDAO;
+    private UserDB mUserDAO;
     private Button btnLogin;
     private Button btnRegistro;
 
@@ -32,7 +32,7 @@ public class Login extends AppCompatActivity {
 
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         mDatabase = dbHelper.getWritableDatabase();
-        mUserDAO = new UserDAO(mDatabase);
+        mUserDAO = new UserDB(mDatabase);
         btnLogin = findViewById(R.id.btnInsertar);
         btnRegistro = findViewById(R.id.btnRegistro);
         etUser = findViewById(R.id.etUser);

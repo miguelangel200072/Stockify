@@ -6,10 +6,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
-public class RegistroNuevo extends DatabaseHelper{
+public class RegistroNuevoDB extends DatabaseHelper{
     Context context;
 
-    public RegistroNuevo(@Nullable Context context) {
+    public RegistroNuevoDB(@Nullable Context context) {
         super(context);
         this.context = context;
     }

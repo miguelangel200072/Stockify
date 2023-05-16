@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.stockify.db.RegistroNuevo;
+import com.example.stockify.db.RegistroNuevoDB;
 
 public class Registro extends AppCompatActivity {
     EditText etUser, etPass;
@@ -29,7 +29,7 @@ public class Registro extends AppCompatActivity {
 
                 if(!etUser.getText().toString().equals("") && !etPass.getText().toString().equals("")) {
 
-                    RegistroNuevo dbContactos = new RegistroNuevo(Registro.this);
+                    RegistroNuevoDB dbContactos = new RegistroNuevoDB(Registro.this);
                     long id = dbContactos.insertarContacto(etUser.getText().toString(), etPass.getText().toString());
 
                     if (id > 0) {

@@ -5,11 +5,11 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.stockify.entidades.User;
 
-public class UserDAO {
+public class UserDB {
 
     private SQLiteDatabase mDatabase;
 
-    public UserDAO(SQLiteDatabase database) {
+    public UserDB(SQLiteDatabase database) {
         mDatabase = database;
     }
 

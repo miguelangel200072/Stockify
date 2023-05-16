@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.stockify.db.InsertarProductoDB;
-import com.example.stockify.db.RegistroNuevo;
 
 public class InsertarProducto extends AppCompatActivity {
     EditText etCodigo, etStandNuevo, etDescr;
