@@ -12,19 +12,19 @@
         android:layout_width="200dp"
         android:layout_height="54dp"
 
-        android:layout_marginStart="55dp"
+        android:layout_marginStart="40dp"
 
         android:layout_marginTop="72dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="23dp"
         android:background="@drawable/prueba"
         android:elevation="2.5dp"
         android:ems="10"
-        android:hint="Codigo del articulo:"
 
+        android:hint="Codigo del articulo:"
         android:inputType="textAutoCorrect"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/btnScan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -109,10 +109,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnScan"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="65dp"
         android:layout_marginEnd="20dp"
         android:backgroundTint="@color/boton"
         android:text="escanear"

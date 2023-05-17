@@ -3,6 +3,7 @@ package com.example.stockify;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.print.PrintHelper;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -14,15 +15,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class GenerarCodigo extends AppCompatActivity {
     ImageView imgCodigo;
     EditText etCodigo;
     TextView tvUser;
-    Button btnGenerar, btnImprimir;
+    Button btnGenerar, btnImprimir, btnScan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,7 @@ public class GenerarCodigo extends AppCompatActivity {
         imgCodigo = findViewById(R.id.imgCodigo);
         btnImprimir = findViewById(R.id.btnImprimir);
         tvUser = findViewById(R.id.tvUser);
+        btnScan = findViewById(R.id.btnScan);
         String username = getIntent().getStringExtra("username");
         tvUser.setText(username);
 
@@ -53,6 +58,19 @@ public class GenerarCodigo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 imprimirCodigos();
+            }
+        });
+        btnScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                IntentIntegrator integrador = new IntentIntegrator(GenerarCodigo.this);
+                integrador.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrador.setPrompt("Stockify");
+                integrador.setCameraId(0);
+                integrador.setBeepEnabled(true);
+                integrador.setBarcodeImageEnabled(true);
+                integrador.initiateScan();
             }
         });
     }
@@ -85,5 +103,19 @@ public class GenerarCodigo extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null){
+            if (result.getContents() == null){
+                Toast.makeText(this, "Lectura cancelada", Toast.LENGTH_LONG).show();
+            }else {
+                Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
+                etCodigo.setText(result.getContents());
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+
     }
 }

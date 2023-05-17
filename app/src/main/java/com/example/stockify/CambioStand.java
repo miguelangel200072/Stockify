@@ -2,6 +2,7 @@ package com.example.stockify;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.stockify.db.CambioSHistoricoDB;
 import com.example.stockify.db.CambioSProductoDB;
@@ -17,6 +19,8 @@ import com.example.stockify.db.InsertarProductoDB;
 import com.example.stockify.db.MostrarStandDB;
 import com.example.stockify.db.ObtenerIdDB;
 import com.example.stockify.db.ObtenerIdUsuarioDB;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import java.util.Calendar;
 
@@ -61,6 +65,19 @@ public class CambioStand extends AppCompatActivity {
                 id2 = ObtenerIdDB.obtenerId(etArt, numId);
             }
         });
+        btnScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                IntentIntegrator integrador = new IntentIntegrator(CambioStand.this);
+                integrador.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+                integrador.setPrompt("Stockify");
+                integrador.setCameraId(0);
+                integrador.setBeepEnabled(true);
+                integrador.setBarcodeImageEnabled(true);
+                integrador.initiateScan();
+            }
+        });
         btnCambio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,5 +120,19 @@ public class CambioStand extends AppCompatActivity {
         String dateTime = String.format("%d-%02d-%02d %02d:%02d:%02d", day, month, year, hour, minute, second);
 
         return dateTime;
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null){
+            if (result.getContents() == null){
+                Toast.makeText(this, "Lectura cancelada", Toast.LENGTH_LONG).show();
+            }else {
+                Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
+                etArt.setText(result.getContents());
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+
     }
 }
