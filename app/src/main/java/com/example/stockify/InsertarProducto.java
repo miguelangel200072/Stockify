@@ -72,7 +72,6 @@ public class InsertarProducto extends AppCompatActivity {
     private boolean checkProductoExistente(String codigo) {
         // Realizar la consulta en la base de datos para comprobar la existencia del producto
         InsertarProductoDB dbContactos = new InsertarProductoDB(InsertarProducto.this);
-        boolean productoExistente = dbContactos.checkProductoExistente(codigo);
-        return productoExistente;
+        return dbContactos.checkProductoExistente(codigo);
     }
 }
