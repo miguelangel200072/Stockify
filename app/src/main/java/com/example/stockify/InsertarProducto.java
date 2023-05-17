@@ -31,27 +31,48 @@ public class InsertarProducto extends AppCompatActivity {
         btnInsertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String codigo = etCodigo.getText().toString();
+                String standNuevo = etStandNuevo.getText().toString();
+                String descr = etDescr.getText().toString();
 
-                if(!etCodigo.getText().toString().equals("") && !etStandNuevo.getText().toString().equals("") && !etDescr.getText().toString().equals("")) {
-
-                    InsertarProductoDB dbContactos = new InsertarProductoDB(InsertarProducto.this);
-                    long id = dbContactos.insertarProducto(etCodigo.getText().toString(), etStandNuevo.getText().toString(), etDescr.getText().toString());
-
-                    if (id > 0) {
-                        Toast.makeText(InsertarProducto.this, "REGISTRO GUARDADO", Toast.LENGTH_LONG).show();
-                        limpiar();
-                    } else {
-                        Toast.makeText(InsertarProducto.this, "ERROR AL GUARDAR REGISTRO", Toast.LENGTH_LONG).show();
-                    }
-                } else {
+                if (codigo.isEmpty() || standNuevo.isEmpty() || descr.isEmpty()) {
                     Toast.makeText(InsertarProducto.this, "DEBE LLENAR LOS CAMPOS OBLIGATORIOS", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                // Realizar la comprobación de existencia del producto por código
+                boolean productoExistente = checkProductoExistente(codigo);
+
+                if (productoExistente) {
+                    Toast.makeText(InsertarProducto.this, "YA EXISTE UN PRODUCTO CON EL MISMO CÓDIGO", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                // Insertar el producto en la base de datos
+                InsertarProductoDB dbContactos = new InsertarProductoDB(InsertarProducto.this);
+                long id = dbContactos.insertarProducto(codigo, standNuevo, descr);
+
+                if (id > 0) {
+                    Toast.makeText(InsertarProducto.this, "REGISTRO GUARDADO", Toast.LENGTH_LONG).show();
+                    limpiar();
+                } else {
+                    Toast.makeText(InsertarProducto.this, "ERROR AL GUARDAR REGISTRO", Toast.LENGTH_LONG).show();
                 }
             }
         });
+
+
+
     }
     private void limpiar() {
         etCodigo.setText("");
         etStandNuevo.setText("");
         etDescr.setText("");
+    }
+    private boolean checkProductoExistente(String codigo) {
+        // Realizar la consulta en la base de datos para comprobar la existencia del producto
+        InsertarProductoDB dbContactos = new InsertarProductoDB(InsertarProducto.this);
+        boolean productoExistente = dbContactos.checkProductoExistente(codigo);
+        return productoExistente;
     }
 }
