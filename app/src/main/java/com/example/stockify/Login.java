@@ -33,7 +33,7 @@ public class Login extends AppCompatActivity {
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         mDatabase = dbHelper.getWritableDatabase();
         mUserDAO = new UserDB(mDatabase);
-        btnLogin = findViewById(R.id.btnInsertar);
+        btnLogin = findViewById(R.id.btnLogin);
         btnRegistro = findViewById(R.id.btnRegistro);
         etUser = findViewById(R.id.etUser);
         etPass = findViewById(R.id.etPass);

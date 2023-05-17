@@ -9,23 +9,22 @@
 
     <EditText
         android:id="@+id/etCodigo"
-        android:layout_width="314dp"
+        android:layout_width="200dp"
         android:layout_height="54dp"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="48dp"
+
+        android:layout_marginStart="55dp"
+
         android:layout_marginTop="72dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginEnd="40dp"
         android:background="@drawable/prueba"
         android:elevation="2.5dp"
         android:ems="10"
         android:hint="Codigo del articulo:"
+
         android:inputType="textAutoCorrect"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -107,6 +106,18 @@
         android:text="USUARIO:"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/boton"
+        android:text="escanear"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

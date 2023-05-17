@@ -59,7 +59,7 @@
         android:layout_marginTop="312dp"
         android:layout_marginEnd="60dp"
         android:backgroundTint="@color/boton"
-        android:text="sign up"
+        android:text="Completar registro"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
