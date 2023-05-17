@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 public class MenuAPP extends AppCompatActivity {
-    Button btnInsertar, btnBuscar, btnGenerar, btnCambio, btnHistorico, btnExit;
+    Button btnInsertar, btnBuscar, btnGenerar, btnCambio, btnHistorico;
+    FrameLayout btnExit;
     TextView tvUser;
 
     @Override
