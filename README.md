@@ -45,11 +45,5 @@ Esta aplicación de gestión de almacén está diseñada para ayudar a los usuar
 
 ## Contacto
 
-Para más información o preguntas, puedes contactar al autor a través de:
-
-- Correo: [tu_correo@ejemplo.com](mailto:tu_correo@ejemplo.com)
-- LinkedIn: [tu_perfil_de_LinkedIn](www.linkedin.com/in/miguelangelrivera)
-
----
-
-Recuerda reemplazar "tu_usuario", "tu_repositorio", "tu_correo@ejemplo.com" y "tu_perfil_de_LinkedIn" con la información correspondiente.
+- Correo: [miguelanrgw@gmail.com](mailto:miguelanrgw@gmail.com)
+- LinkedIn: [www.linkedin.com/in/miguelangelrivera](www.linkedin.com/in/miguelangelrivera)
